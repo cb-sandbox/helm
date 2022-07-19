@@ -123,6 +123,8 @@ nginx-ingress:
     9200: "{{ .Release.Namespace }}/flow-devopsinsight:9200"
     9500: "{{ .Release.Namespace }}/flow-devopsinsight:9500"
 
+ingress-nginx:
+  enabled: false
 
 demoMode: false
 
