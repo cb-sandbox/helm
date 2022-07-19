@@ -113,21 +113,12 @@ flowCredentials:
 # nginx-ingress, which is why we are bundling ingress itself with Flow.
 
 nginx-ingress:
-
   enabled: false
-
-  tcp:
-    8200: "{{ .Release.Namespace }}/flow-repository:8200"
-    8443: "{{ .Release.Namespace }}/flow-server:8443"
-    61613: "{{ .Release.Namespace }}/flow-server:61613"
-    9200: "{{ .Release.Namespace }}/flow-devopsinsight:9200"
-    9500: "{{ .Release.Namespace }}/flow-devopsinsight:9500"
 
 ingress-nginx:
   enabled: false
 
 demoMode: false
-
 
 internalGatewayAgent:
   enabled: true
