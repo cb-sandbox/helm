@@ -2,7 +2,7 @@
 controller:
 # as we already use 8443 port for flow-server tcp expose , changed default admissionWebhooks port to 8445
   admissionWebhooks:
-    port: 8443
+    port: 8445
   config:
     proxy-stream-timeout: "4000s"
 
