@@ -1,6 +1,4 @@
-
 controller:
-# as we already use 8443 port for flow-server tcp expose , changed default admissionWebhooks port to 8445
   admissionWebhooks:
     port: 8445
   config:
@@ -9,16 +7,11 @@ controller:
   ingressClassResource:
     name: nginx
     default: true
-  
-  publishService:
-    enabled: true 
-  scope:
-    enabled: true
-    
 tcp:
-  8200: "cloudbees-sda/flow-repository:8200"
-  8443: "cloudbees-sda/flow-server:8443"
-  7800: "cloudbees-sda/gateway-external-agent-flow-agents:7800"
-  61613: "cloudbees-sda/flow-server:61613"
-  9200: "cloudbees-sda/flow-devopsinsight:9200"
-  9500: "cloudbees-sda/flow-devopsinsight:9500"
+  # "7800": cloudbees-sda/gateway-external-agent-flow-agents:7800
+  "8200": cloudbees-sda/flow-repository:8200
+  "8443": cloudbees-sda/flow-server:8443
+  # If you need to expose DOIS externally you can enable these, but you may run into issues in GCP
+  # "9200": cloudbees-sda/flow-devopsinsight:9200
+  # "9500": cloudbees-sda/flow-devopsinsight:9500
+  "61613": cloudbees-sda/flow-server:61613
