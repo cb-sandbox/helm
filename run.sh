@@ -24,7 +24,7 @@ if [ "$CD_ENABLED" = true ]; then
     -f nginx/values.yaml
 else
   helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
-    -n ingress-nginx --create-namespace --version 1.3.0
+    -n ingress-nginx --create-namespace
 fi
 
 # Setup DNS
