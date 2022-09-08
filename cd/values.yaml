@@ -2,6 +2,7 @@ ingress:
   enabled: true
   host:
 
+  class: nginx
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/affinity: "cookie"
