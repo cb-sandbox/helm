@@ -11,7 +11,11 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo add sandbox-charts https://cb-sandbox.github.io/charts/
 helm repo add jetstack https://charts.jetstack.io
 helm repo add jfrog https://charts.jfrog.io
-helm repo add oteemo-charts https://oteemo.github.io/charts
+# deprecated helm chart
+# helm repo add oteemo-charts https://oteemo.github.io/charts
+# added two new repos for the sonarqube & nexus install
+helm repo add sonatype https://sonatype.github.io/helm3-charts
+helm repo add sonarqube https://SonarSource.github.io/helm-chart-sonarqube
 helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
 
 # Update repos
@@ -37,7 +41,7 @@ sleep 45
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
 
 if [ "$SONARQUBE_ENABLED" = true ]; then
-  helm upgrade --install sonarqube oteemo-charts/sonarqube -n sonarqube \
+  helm upgrade --install sonarqube sonarqube/sonarqube -n sonarqube \
     --create-namespace -f sonarqube/values.yaml --version "$SONARQUBE_VERSION" \
     --set ingress.hosts[0].name="sonar.$BASE_DOMAIN" \
     --set ingress.tls[0].hosts[0]="sonar.$BASE_DOMAIN" \
@@ -45,7 +49,7 @@ if [ "$SONARQUBE_ENABLED" = true ]; then
 fi
 
 if [ "$NEXUS_ENABLED" = true ]; then
-  helm upgrade --install nexus oteemo-charts/sonatype-nexus -n nexus \
+  helm upgrade --install nexus sonatype/nexus-repository-manager -n nexus \
     --create-namespace -f nexus/values.yaml --version "$NEXUS_VERSION" \
     --set nexusProxy.env.nexusHttpHost="nexus.$BASE_DOMAIN" \
     --set nexusProxy.env.nexusDockerHost="docker.$BASE_DOMAIN" \
