@@ -43,7 +43,7 @@ sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
 
 if [ "$SONARQUBE_ENABLED" = true ]; then
   helm upgrade --install sonarqube sonarqube/sonarqube -n sonarqube \
-    --create-namespace -f sonarqube/values.yaml --version "$SONARQUBE_VERSION" \
+    --create-namespace -f sonarqube/values.yaml \
     --set ingress.hosts[0].name="sonar.$BASE_DOMAIN" \
     --set ingress.tls[0].hosts[0]="sonar.$BASE_DOMAIN" \
     --set account.adminPassword="$SONARQUBE_TOKEN"
@@ -51,7 +51,7 @@ fi
 
 if [ "$NEXUS_ENABLED" = true ]; then
   helm upgrade --install nexus sonatype/nexus-repository-manager -n nexus \
-    --create-namespace -f nexus/values.yaml --version "$NEXUS_VERSION" \
+    --create-namespace -f nexus/values.yaml \
     --set nexusProxy.env.nexusHttpHost="nexus.$BASE_DOMAIN" \
     --set nexusProxy.env.nexusDockerHost="docker.$BASE_DOMAIN" \
     --set initAdminPassword.enabled=true \
