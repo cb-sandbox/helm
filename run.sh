@@ -3,6 +3,7 @@
 # Connect to cluster
 gcloud container clusters get-credentials "$CLUSTER_NAME" --zone us-central1-a --project $CLUSTER_PROJECT
 
+helm repo update
 # Add Helm repos
 helm repo add stable https://charts.helm.sh/stable
 helm repo add cloudbees https://charts.cloudbees.com/public/cloudbees
