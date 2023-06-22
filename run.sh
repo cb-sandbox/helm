@@ -52,8 +52,8 @@ fi
 if [ "$NEXUS_ENABLED" = true ]; then
   helm upgrade --install nexus sonatype/nexus-repository-manager -n nexus \
     --create-namespace -f nexus/values.yaml \
-    --set nexusProxy.env.nexusHttpHost="nexus.$BASE_DOMAIN" \
-    --set nexusProxy.env.nexusDockerHost="docker.$BASE_DOMAIN" \
+    # --set nexusProxy.env.nexusHttpHost="nexus.$BASE_DOMAIN" \
+    # --set nexusProxy.env.nexusDockerHost="docker.$BASE_DOMAIN" \
     --set initAdminPassword.enabled=true \
     --set initAdminPassword.password="$NEXUS_TOKEN"
 fi
