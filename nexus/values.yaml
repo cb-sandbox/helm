@@ -1,14 +1,32 @@
 replicaCount: 1
 nexus:
+  env:
+    - name: INSTALL4J_ADD_VM_PARAMS
+     value: |-
+       -Xms2703M -Xmx2703M
+       -XX:+UnlockExperimentalVMOptions -XX:ActiveProcessorCount=4
+       -XX:+UseCGroupMemoryLimitForHeap
+       -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+       -Dnexus.licenseFile=/etc/nexus-license/license.lic
+       -Dnexus.datastore.enabled=true
+       -Dnexus.datastore.nexus.jdbcUrl=jdbc:postgresql://postgresql-host:5432/nexusdb
+       -Dnexus.datastore.nexus.username=admin
+       -Dnexus.datastore.nexus.password=admin
+       
   service:
     type: ClusterIP
   nexusPort: 8081
   additionalPorts:
   - 8081
+  
 ingress:
   enabled: true
   path: /
+  hostPath: /
+  hostRepo: nexus.$BASE_DOMAIN
+  ingressClassName: nginx
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
     cert-manager.io/cluster-issuer: letsencrypt-prod
   tls:
     enabled: true
