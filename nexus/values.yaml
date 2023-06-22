@@ -23,7 +23,7 @@ ingress:
   enabled: true
   path: /
   hostPath: /
-  hostRepo: nexus.$BASE_DOMAIN
+  hostRepo: nexus.${BASE_DOMAIN}
   ingressClassName: nginx
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
