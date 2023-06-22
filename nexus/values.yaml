@@ -11,7 +11,7 @@ nexus:
        -Dnexus.datastore.enabled=true
        -Dnexus.datastore.nexus.jdbcUrl=jdbc:postgresql://postgresql-host:5432/nexusdb
        -Dnexus.datastore.nexus.username=admin
-       -Dnexus.datastore.nexus.password=admin
+       -Dnexus.datastore.nexus.password=${NEXUS_TOKEN}
        
   service:
     type: ClusterIP
