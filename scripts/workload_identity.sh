@@ -7,6 +7,7 @@ echo "----> Setting up Workload Identity"
 GCP_SA_NAME=jenkins-build-sa
 NAMESPACE=cloudbees-sda
 K8S_SA_NAME=jenkins
+CLUSTER_PROJECT=cb-thunder-v2
 
 gcloud iam service-accounts add-iam-policy-binding \
   --role roles/iam.workloadIdentityUser \
