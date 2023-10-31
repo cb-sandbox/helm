@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x 
+
 echo "----> Setting up Workload Identity"
 
 GCP_SA_NAME=jenkins-build-sa
