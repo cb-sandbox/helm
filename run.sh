@@ -84,7 +84,7 @@ if [ "$CI_ENABLED" = true ]; then
     --set OperationsCenter.HostName="$CI_DOMAIN" \
     $(if [ "$CD_ENABLED" = true ]; then echo "--set sda=true"; fi) \
     --set-file 'OperationsCenter.ExtraGroovyConfiguration.z-quickstart-hook\.groovy'=./ci/groovy-license-activated/z-quickstart-hook.groovy
-  . ./scripts/workload_identity.sh
+#  . ./scripts/workload_identity.sh
 fi
 
 
