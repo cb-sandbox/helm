@@ -38,3 +38,9 @@ Persistence:
 Hibernation:
   Enabled: true
 
+rbac:
+  install:true
+  serviceAccountName: cjoc
+  masterServiceAccountName: jenkins
+  agentsServiceAccountName: jenkins-agent
+  hibernationMonitorServiceAccountName: managed-master-hibernation-monitor
