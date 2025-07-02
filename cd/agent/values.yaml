@@ -1,7 +1,7 @@
 images:
-  registry: "gcr.io/cb-thunder-v2"
+  registry: "gcr.io/core-flow-research"
   imageRepository: "k8s-agent"
-  tag: "10.3.2.151906_3.0.37_20211116"
+  tag: "10.9.0.157496_3.2.22_20220929"
   pullPolicy: Always
 resourceName: "k8s-agent"
 resourcePools: "kubectl"
