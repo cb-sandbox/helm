@@ -31,6 +31,10 @@ OperationsCenter:
       mountPath: /var/jenkins_home/quickstart.groovy.d
       readOnly: true
 
+Agents:
+  SeparateNamespace:
+    Enabled: true
+    Create: true
 
 Persistence:
   Size: 20Gi
