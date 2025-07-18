@@ -86,7 +86,7 @@ if [ "$CI_ENABLED" = true ]; then
     --set-file 'OperationsCenter.ExtraGroovyConfiguration.z-quickstart-hook\.groovy'=./ci/groovy-license-activated/z-quickstart-hook.groovy
   . ./scripts/workload_identity.sh
 
-  helm upgrade --install nfs-server-provisioner kvaps/nfs-server-provisioner --version 1.1.1 \
+  helm upgrade --install nfs-server-provisioner kvaps/nfs-server-provisioner --version 1.8.0 \
     -n "$CI_NAMESPACE" --create-namespace -f nfs-server-provisioner/values.yaml
 fi
 
