@@ -98,7 +98,7 @@ if [ "$CD_ENABLED" = true ]; then
   # Install SSD storage class
   kubectl apply -f ./k8s/ssd.yaml
   # Install nfs-server-provisioner
-  helm upgrade --install nfs-server-provisioner kvaps/nfs-server-provisioner --version 1.1.1 \
+  helm upgrade --install nfs-server-provisioner kvaps/nfs-server-provisioner --version 1.8.0 \
     -n "$CD_NAMESPACE" --create-namespace -f nfs-server-provisioner/values.yaml
   # Install mysql
   helm upgrade --install mysql sandbox-charts/mysql \
