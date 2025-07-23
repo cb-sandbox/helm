@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check env - BobC
+env
+
 # Connect to cluster
 gcloud container clusters get-credentials "$CLUSTER_NAME" --zone us-central1-a --project $CLUSTER_PROJECT
 
