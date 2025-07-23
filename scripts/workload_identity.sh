@@ -4,6 +4,11 @@ set -x
 
 echo "----> Setting up Workload Identity"
 
+echo "----> testing who this is running as with:"
+echo "gcloud config list account"
+
+gcloud config list account
+
 GCP_SA_NAME=jenkins-build-sa
 NAMESPACE=cloudbees-sda
 K8S_SA_NAME=jenkins
