@@ -42,7 +42,8 @@ fi
 # helm upgrade --install cert-manager jetstack/cert-manager \
 #  --set installCRDs=true -n cert-manager --create-namespace
 helm upgrade --install cert-manager jetstack/cert-manager \
-  --set crds.enabled=true -n cert-manager --create-namespace
+  --set crds.enabled=true --set ingressShim.defaultPathType=ImplementationSpecific \
+  -n cert-manager --create-namespace
 sleep 45
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
 
