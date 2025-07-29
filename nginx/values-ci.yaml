@@ -1,0 +1,13 @@
+controller:
+  admissionWebhooks:
+    enabled: true
+    patch:
+      enabled: true
+  allowSnippetAnnotations: true
+  config:
+    proxy-stream-timeout: "4000s"
+    enable-underscore-in-headers: "true"
+
+  ingressClassResource:
+    name: nginx
+    default: true
