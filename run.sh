@@ -45,7 +45,11 @@ fi
 helm upgrade --install cert-manager jetstack/cert-manager \
   --set crds.enabled=true -n cert-manager --create-namespace
 sleep 45
+# change the registration email
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
+# request the cert with different Path Type
+helm upgrade cert-manager jetstack/cert-manager   --namespace cert-manager \
+  --reuse-values --set ingressShim.defaultPathType=ImplementationSpecific
 
 if [ "$SONARQUBE_ENABLED" = true ]; then
   helm upgrade --install sonarqube sonarqube/sonarqube -n sonarqube \
