@@ -1,0 +1,3 @@
+ingressShim:
+  defaultIngressClass: nginx
+  defaultPathType: ImplementationSpecific
