@@ -48,12 +48,9 @@ helm upgrade --install cert-manager jetstack/cert-manager \
 sleep 45
 # change the registration email
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
-# 
-# to MANUALLY request the cert with different Path Type, type the following after
-# cluster is provisioned
-# THIS DOES NOT WORK IN LINE OR IN ANY OTHER PART OF THIS SCRIPT
-#helm upgrade cert-manager jetstack/cert-manager   --namespace cert-manager \
-#  --reuse-values --set ingressShim.defaultPathType=ImplementationSpecific
+#
+# wait for cert-manager to issue and respond to HTTP01 challenge
+#
 
 if [ "$SONARQUBE_ENABLED" = true ]; then
   helm upgrade --install sonarqube sonarqube/sonarqube -n sonarqube \
