@@ -47,7 +47,10 @@ helm upgrade --install cert-manager jetstack/cert-manager \
 sleep 45
 # change the registration email
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
-# request the cert with different Path Type ----> MOVING TO THE END
+# 
+# to MANUALLY request the cert with different Path Type, type the following after
+# cluster is provisioned
+# THIS DOES NOT WORK IN LINE OR IN ANY OTHER PART OF THIS SCRIPT
 #helm upgrade cert-manager jetstack/cert-manager   --namespace cert-manager \
 #  --reuse-values --set ingressShim.defaultPathType=ImplementationSpecific
 
@@ -135,6 +138,3 @@ if [ "$CD_ENABLED" = true ]; then
     --set flowCredentials.password=$CD_ADMIN_PASS \
     --wait
 fi
-
-# moved the following to the end of this on purpose. timing would not work otherwise
-helm upgrade cert-manager jetstack/cert-manager   --namespace cert-manager   --reuse-values   --set ingressShim.defaultPathType=ImplementationSpecific
