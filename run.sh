@@ -43,7 +43,8 @@ fi
 # helm upgrade --install cert-manager jetstack/cert-manager \
 #  --set installCRDs=true -n cert-manager --create-namespace
 helm upgrade --install cert-manager jetstack/cert-manager \
-  --set crds.enabled=true -n cert-manager --create-namespace
+  --set crds.enabled=true -n cert-manager --create-namespace \
+  -f cert-manager/values.yaml
 sleep 45
 # change the registration email
 sed "s/REPLACE_EMAIL/$EMAIL/g" cert-manager/issuers.yaml | kubectl apply -f -
